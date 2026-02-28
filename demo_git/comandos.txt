@@ -1,0 +1,37 @@
+pwd
+ls
+mkdir demo_git
+ls
+cd demo_git/
+touch saludo.txt
+ls
+ls -la
+echo "Hola Mundo" > saludo.txt
+cat saludo.txt
+echo "cat saludo.txt !" >> saludo.txt
+cat saludo.txt
+echo "Hola Mundo" > saludo.txt
+cat saludo.txt
+echo "cat saludo.txt !" >> saludo.txt
+echo "Hola Mundo" > saludo.txt
+ls
+echo "Contenido" > borrar.txt
+ls
+cat borrar.txt
+rm borrar.txt
+ls
+cat saludo.txt
+cd ..
+echo "# SIS257-2026-1" > README.md
+git init
+git status
+git add .
+git status
+git commit -m 'Inicio del repositorio de la materia'
+git config --global user.name "Noel Vaca"
+git config --global user.email "noel.vm.2501@gmail.com"
+git branch -M main
+git remote add origin https://github.com/enevaca/sis257_2026_1.git
+git push -u origin main
+cd demo_git/
+touch comandos.txt
