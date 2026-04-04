@@ -1,27 +1,29 @@
-import { Album } from 'src/albumes/entities/album.entity';
+import { Artista } from 'src/artistas/entities/artista.entity';
 import {
   Column,
   CreateDateColumn,
   DeleteDateColumn,
   Entity,
-  OneToMany,
+  JoinColumn,
+  ManyToMany,
+  ManyToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
 
-@Entity('artistas')
-export class Artista {
+@Entity('albumes')
+export class Album {
   @PrimaryGeneratedColumn('identity')
   id: number;
+
+  @Column('integer', { name: 'id_artista' })
+  idArtista: number;
 
   @Column('varchar', { length: 50 })
   nombre: string;
 
-  @Column('varchar', { length: 30 })
-  nacionalidad: string;
-
-  @Column('varchar', { length: 1000 })
-  fotografia: string;
+  @Column('date', { name: 'fecha_lanzamiento' })
+  fechaLanzamiento: Date;
 
   @CreateDateColumn({ name: 'fecha_creacion' })
   fechaCreacion: Date;
@@ -32,6 +34,7 @@ export class Artista {
   @DeleteDateColumn({ name: 'fecha_eliminacion' })
   fechaEliminacion: Date;
 
-  @OneToMany(() => Album, album => album.artista)
-  albumes: Album[];
+  @ManyToOne(() => Artista, artista => artista.albumes)
+  @JoinColumn({ name: 'id_artista', referencedColumnName: 'id' })
+  artista: Artista;
 }

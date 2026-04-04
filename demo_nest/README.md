@@ -29,6 +29,7 @@
 
 ```bash
 $ npm install
+$ cp .env.sample .env
 ```
 
 ## Compile and run the project
