@@ -1,12 +1,13 @@
 import { Artista } from 'src/artistas/entities/artista.entity';
+import { Cancion } from 'src/canciones/entities/cancion.entity';
 import {
   Column,
   CreateDateColumn,
   DeleteDateColumn,
   Entity,
   JoinColumn,
-  ManyToMany,
   ManyToOne,
+  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
@@ -37,4 +38,7 @@ export class Album {
   @ManyToOne(() => Artista, artista => artista.albumes)
   @JoinColumn({ name: 'id_artista', referencedColumnName: 'id' })
   artista: Artista;
+
+  @OneToMany(() => Cancion, cancion => cancion.album)
+  canciones: Cancion[];
 }
