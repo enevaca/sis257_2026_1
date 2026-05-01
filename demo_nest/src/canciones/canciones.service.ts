@@ -29,7 +29,7 @@ export class CancionesService {
         duracion: true,
         tags: true,
         url: true,
-        album: { id: true, nombre: true, artista: { id: true, nombre: true } },
+        album: { id: true, nombre: true, artista: { id: true, nombre: true, fotografia: true } },
         genero: { id: true, descripcion: true },
       },
       relations: { album: { artista: true }, genero: true },
