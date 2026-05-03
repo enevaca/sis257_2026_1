@@ -1,16 +1,18 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { Transform } from 'class-transformer';
-import { IsDefined, IsInt, IsNotEmpty, IsString, MaxLength } from 'class-validator';
+import { IsDefined, IsInt, IsNotEmpty, IsString, MaxLength, Min } from 'class-validator';
 
 export class CreateCancionDto {
   @ApiProperty()
   @IsDefined({ message: 'El id del album es obligatorio' })
   @IsInt({ message: 'El id del album debe ser un número entero' })
+  @Min(1, { message: 'El id del album debe ser un número entero positivo' })
   readonly idAlbum: number;
 
   @ApiProperty()
   @IsDefined({ message: 'El id del genero es obligatorio' })
   @IsInt({ message: 'El id del genero debe ser un número entero' })
+  @Min(1, { message: 'El id del genero debe ser un número entero positivo' })
   readonly idGenero: number;
 
   @ApiProperty()

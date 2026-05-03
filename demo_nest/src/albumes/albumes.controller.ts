@@ -22,6 +22,11 @@ export class AlbumesController {
     return this.albumesService.findOne(+id);
   }
 
+  @Get('artista/:id')
+  findByArtista(@Param('id') id: string) {
+    return this.albumesService.findByArtista(+id);
+  }
+
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateAlbumeDto: UpdateAlbumDto) {
     return this.albumesService.update(+id, updateAlbumeDto);

@@ -6,7 +6,7 @@ export interface Cancion {
   idAlbum: number
   idGenero: number
   nombre: string
-  duracion: number
+  duracion: string
   tags: string
   url: string
   album: Album

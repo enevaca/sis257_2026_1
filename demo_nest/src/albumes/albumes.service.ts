@@ -34,6 +34,13 @@ export class AlbumesService {
     return album;
   }
 
+  async findByArtista(idArtista: number): Promise<Album[]> {
+    return this.albumRepository.find({
+      where: { idArtista },
+      order: { nombre: 'ASC' },
+    });
+  }
+
   async update(id: number, updateAlbumeDto: UpdateAlbumDto): Promise<Album> {
     const album = await this.findOne(id);
     Object.assign(album, updateAlbumeDto);
