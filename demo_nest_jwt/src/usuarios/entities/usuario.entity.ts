@@ -1,4 +1,4 @@
-import { createHash } from 'crypto';
+import { compare, genSalt, hash } from 'bcryptjs';
 import {
   BeforeInsert,
   BeforeUpdate,
@@ -41,7 +41,12 @@ export class Usuario {
 
   @BeforeInsert()
   @BeforeUpdate()
-  hashClave() {
-    this.clave = createHash('sha256').update(this.clave).digest('hex');
+  async hashPassword() {
+    const salt = await genSalt();
+    this.clave = await hash(this.clave, salt);
+  }
+
+  async validatePassword(plainPassword: string): Promise<boolean> {
+    return compare(plainPassword, this.clave);
   }
 }
